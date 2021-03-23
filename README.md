@@ -1,3 +1,4 @@
+<div style="text-align:center">
 <h1>Araç Kiralama</h1>
 <p>Asp.net Core5 teknolojisini kullanarak oluşturduğum projede Vitrin ve AdminPaneli Bulunuyor. </p>
 <h2>Vitrin</h2>
@@ -12,3 +13,4 @@
 <img class="my-4" src="https://i.hizliresim.com/bIYyrL.png" alt="bIYyrL">
 <h2>Login</h2>
 <img class="my-4" src="https://i.hizliresim.com/sgKeph.png" alt="sgKeph">
+</div>

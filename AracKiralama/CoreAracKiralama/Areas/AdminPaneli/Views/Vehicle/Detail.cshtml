@@ -1,0 +1,124 @@
+﻿@model CoreAracKiralama.Models.Vehicle
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+
+    body {
+        background: #F5F1EE;
+        font-family: 'Roboto', sans-serif
+    }
+
+    .card {
+        width: 250px;
+        border-radius: 10px
+    }
+
+    .card-img-top {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px
+    }
+
+    span.text-muted {
+        font-size: 12px
+    }
+
+    small.text-muted {
+        font-size: 8px
+    }
+
+    h5.mb-0 {
+        font-size: 1rem
+    }
+
+    small.ghj {
+        font-size: 9px
+    }
+
+    .mid {
+        background: #ECEDF1
+    }
+
+    h6.ml-1 {
+        font-size: 13px
+    }
+
+    small.key {
+        text-decoration: underline;
+        font-size: 9px;
+        cursor: pointer
+    }
+
+    .btn-danger {
+        color: #FFCBD2
+    }
+
+        .btn-danger:focus {
+            box-shadow: none
+        }
+
+    small.justify-content-center {
+        font-size: 9px;
+        cursor: pointer;
+        text-decoration: underline
+    }
+</style>
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid d-flex justify-content-center">
+    <div class="row mt-5">
+        <div class="col-6">
+            <div class="card">
+                <img src="@Model.VehicleImgUrl" class="card-img-top" style="width:100%">
+                <div class="card-body pt-0 px-0">
+                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                        <small class="text-muted mt-1">Firma</small>
+                        <h6>@ViewBag.Company</h6>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                        <small class="text-muted mt-1">Marka Model</small>
+                        <h6>@Model.Brand.BrandName @Model.VehicleName</h6>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                        <small class="text-muted mt-1">Plaka</small>
+                        <h6>@Model.VehiclePlate</h6>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                        <small class="text-muted mt-1">Saatlik Ücret</small>
+                        <h6>@Model.VehiclePrice ₺</h6>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                        <small class="text-muted mt-1">Bakım Tarihi</small>
+                        <h6>@Model.VehicleInspectionTime.ToString("MM/dd/yyyy")</h6>
+                    </div>
+                    <hr class="mt-2 mx-3">
+                    <div class="d-flex flex-row justify-content-between px-3 pb-4">
+                        <div class="d-flex flex-column"><span class="text-muted">Araç Durumu</span><small class="text-muted">@Model.VehicleStatus</small></div>
+                        <div class="d-flex flex-column">
+                            <h5 class="mb-0">@Model.VehicleStatus</h5><small class="text-muted text-right">(city/Hwy)</small>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between p-3 mid">
+                        <div class="d-flex flex-column">
+                            <small class="text-muted mb-1">Vites Türü</small>
+                            <div class="d-flex flex-row">
+                                <img src="https://imgur.com/iPtsG7I.png" width="35" height="25">
+                                <div class="d-flex flex-column ml-1"><small class="ghj">@Model.VehicleGearType</small><small class="ghj">16V I-4 Turbo</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <small class="text-muted mb-2">Yakıt Türü</small>
+                            <div class="d-flex flex-row">
+                                <img src="https://imgur.com/J11mEBq.png">
+                                <h6 class="ml-1">@Model.VehicleFuelType</h6>
+                            </div>
+                        </div>
+                    </div> <small class="text-muted key pl-3">@Model.VehicleType</small>
+                    <div class="mx-3 mt-3 mb-2"><a asp-action="Update" asp-route-id="@Model.VehicleId" class="btn btn-danger btn-block"><small>Düzenle</small></a></div> <small class="d-flex justify-content-center text-muted">Ufuk Güleç</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

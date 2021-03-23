@@ -1,0 +1,61 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Common;
+@model IPagedList<CoreAracKiralama.Models.Brand>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-controller="Brand" asp-action="Index" class="form-group">
+    <p>
+        Marka: <input type="text" name="search" class="form-control" />
+        <div class="row">
+            <div class="col-6">
+                <input type="submit" class="btn btn-outline-success btn-block" value="Ara" />
+            </div>
+            <div class="col-6">
+                <input type="submit" asp-route-search="" class="btn btn-outline-danger btn-block" value="Hepsi" />
+            </div>
+        </div>
+    </p>
+</form>
+<table class="table table-bordered">
+    <tr>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().BrandId)</th>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().BrandName)</th>
+        <th scope="col">@Html.DisplayNameFor(model => model.First().BrandStatus)</th>
+        <th scope="col">GÜNCELLE</th>
+        <th scope="col">AKTİF/PASİF</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td scope="row">@item.BrandId</td>
+            <td>@item.BrandName</td>
+            @if (item.BrandStatus == true)
+            {
+                <td><button class="btn btn-success btn-block" disabled>Aktif</button></td>
+            }
+            else
+            {
+                <td><button class="btn btn-danger btn-block" disabled>Pasif</button></td>
+            }
+
+            <td><a asp-action="Update" asp-route-id="@item.BrandId" class="btn btn-block btn-info">Güncelle</a></td>
+            @if (item.BrandStatus == true)
+            {
+                <td><a asp-action="Delete" asp-route-id="@item.BrandId" class="btn btn-block btn-danger">Pasif hale getir</a></td>
+            }
+            else
+            {
+                <td><a asp-action="Delete" asp-route-id="@item.BrandId" class="btn btn-block btn-success">Aktif hale getir</a></td>
+            }
+
+        </tr>
+    }
+</table>
+<div class="pagination justify-content-center">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })
+</div>
+<a asp-action="Add" class="btn btn-block btn-primary">EKLE</a>

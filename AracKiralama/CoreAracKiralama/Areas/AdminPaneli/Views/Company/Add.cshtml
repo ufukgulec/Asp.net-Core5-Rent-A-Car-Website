@@ -1,0 +1,27 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoreAracKiralama.Models.Company
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Firma Ekleme Sayfası</h1>
+<form asp-action="Add" asp-controller="Company" method="post" class="form-group" enctype="multipart/form-data">
+    <label>@Html.DisplayNameFor(model => model.CompanyName)</label>
+    <input type="text" class="form-control" asp-for="CompanyName" required />
+    <br />
+    <label>@Html.DisplayNameFor(model => model.CompanyAddress)</label>
+    <input type="text" class="form-control" asp-for="CompanyAddress" />
+    <br />
+    <label>@Html.DisplayNameFor(model => model.CompanyPhoneNumber)</label>
+    <input type="text" class="form-control" asp-for="CompanyPhoneNumber" placeholder="312 12 34" required/>
+    <br />
+    <label>@Html.DisplayNameFor(model => model.CompanyEmail)</label>
+    <input type="text" class="form-control" asp-for="CompanyEmail" placeholder="firma@firma.com" required/>
+    <br />
+    <label>@Html.DisplayNameFor(model => model.CompanyLogoUrl)</label>
+    <input type="file" class="form-control-file" asp-for="CompanyImgFile" />
+    <br />
+    <button class="btn btn-block btn-primary">Ekle</button>
+</form>
+

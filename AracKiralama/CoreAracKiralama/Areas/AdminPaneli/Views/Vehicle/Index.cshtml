@@ -1,0 +1,91 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Common;
+@model IPagedList<CoreAracKiralama.Models.Vehicle>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<form asp-controller="Vehicle" asp-action="Index" class="form-group">
+    <p>
+        Marka: <input type="text" name="search" class="form-control" />
+        <div class="row">
+            <div class="col-6">
+                <input type="submit" class="btn btn-outline-success btn-block" value="Ara" />
+            </div>
+            <div class="col-6">
+                <input type="submit" asp-route-search="" class="btn btn-outline-danger btn-block" value="Hepsi" />
+            </div>
+        </div>
+    </p>
+</form>
+<table class="table table-bordered">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().VehicleId)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Brand.BrandName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().VehicleName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().VehiclePlate)</th>
+        <th>@Html.DisplayNameFor(model => model.First().VehicleStatus)</th>
+        <th>DETAY</th>
+        <th>GÜNCELLE</th>
+        <th>SİL</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.VehicleId</td>
+            <td>@item.Brand.BrandName</td>
+            <td>@item.VehicleName</td>
+            <td>@item.VehiclePlate</td>
+            @if (item.VehicleStatus)
+            {
+                <td><button class="btn btn-success btn-block" disabled>Müsait</button></td>
+            }
+            else
+            {
+                <td><button class="btn btn-danger btn-block" disabled>Meşgul</button></td>
+            }
+            <td><a asp-action="Detail" asp-route-id="@item.VehicleId" class="btn btn-block btn-info">Detay</a></td>
+            <td><a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-block btn-warning">Güncelle</a></td>
+            @*<td><a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn btn-block btn-danger">Sil</a></td>*@
+            @*<td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal">Sil</button></td>*@
+            <td><button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#exampleModal" data-nam="@item.VehicleName" data-whatever="@item.VehicleId">Sil</button></td>
+
+        </tr>
+
+    }
+
+</table>
+<div class="pagination justify-content-center">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { LiElementClasses = new string[] { "page-item" }, PageClasses = new string[] { "page-link" } })
+</div>
+<a asp-action="Add" class="btn btn-block btn-primary">Yeni Araç</a>
+<!--MODAL-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Emin misiniz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Silinecek Araç Id: <span></span></h2>
+                <input class="form-control" type="text" value="" readonly />
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>*@
+                <a asp-controller="Vehicle" asp-action="Delete" asp-route-id="" type="button" class="btn btn-danger">Onayla</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--MODAL-->
+<script src="~/js/modal.js"></script>

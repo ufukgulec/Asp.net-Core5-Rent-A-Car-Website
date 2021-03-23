@@ -1,0 +1,71 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoreAracKiralama.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Araç Güncelleme Sayfası</h1>
+<form asp-action="Update" asp-controller="Vehicle" method="post" class="form-group" enctype="multipart/form-data">
+    <input type="text" hidden class="form-control" asp-for="VehicleId" />
+    <input type="text" hidden class="form-control" asp-for="VehicleImgUrl" />
+    <select asp-for="CompanyId"
+            asp-items="ViewBag.Companies" class="form-control" required>
+
+    </select>
+    <br />
+    <select asp-for="BrandId"
+            asp-items="ViewBag.Brands" class="form-control" required>
+        
+    </select>
+    <br />
+    <label>@Html.DisplayNameFor(model => model.VehicleName)</label>
+    <input type="text" class="form-control" asp-for="VehicleName" />
+    @Html.ValidationMessageFor(x => x.VehicleName, "", new { @style = "color:red" })
+    <br />
+    <label>@Html.DisplayNameFor(model => model.VehiclePlate)</label>
+    <input type="text" class="form-control" asp-for="VehiclePlate" />
+    @Html.ValidationMessageFor(x => x.VehiclePlate, "", new { @style = "color:red" })
+    <br />
+    <label>@Html.DisplayNameFor(model => model.VehiclePrice)</label>
+    <input type="text" class="form-control" asp-for="VehiclePrice" />
+    @Html.ValidationMessageFor(x => x.VehiclePrice, "", new { @style = "color:red" })
+    <br />
+    <label>@Html.DisplayNameFor(model => model.VehicleInspectionTime)</label>
+    <input type="date" class="form-control" asp-for="VehicleInspectionTime" required />
+    @Html.ValidationMessageFor(x => x.VehicleInspectionTime, "", new { @style = "color:red" })
+    @*<br />
+        <label>@Html.DisplayNameFor(model => model.VehicleImgUrl)</label>
+
+        <input type="file" class="form-control" asp-for="VehicleImgFile"/>*@
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <label>@Html.DisplayNameFor(model => model.VehicleType)</label>
+            <select asp-for="VehicleType" asp-items="ViewBag.VehicleTypes" class="form-control">
+            </select>
+            @Html.ValidationMessageFor(x => x.VehicleType, "", new { @style = "color:red" })
+        </div>
+        <div class="col-4">
+            <label>@Html.DisplayNameFor(model => model.VehicleGearType)</label>
+            <select asp-for="VehicleGearType" asp-items="ViewBag.VehicleGearTypes" class="form-control">
+            </select>
+            @Html.ValidationMessageFor(x => x.VehicleGearType, "", new { @style = "color:red" })
+        </div>
+        <div class="col-4">
+            <label>@Html.DisplayNameFor(model => model.VehicleFuelType)</label>
+            <select asp-for="VehicleFuelType" asp-items="ViewBag.VehicleFuelTypes" class="form-control">
+            </select>
+            @Html.ValidationMessageFor(x => x.VehicleFuelType, "", new { @style = "color:red" })
+        </div>
+    </div>
+    <br />
+    <label>Marka Vitrinde Gözüksün ?</label>
+    <select asp-for="VehicleStatus" class="form-control">
+        <option class="form-control" value="True">Evet</option>
+        <option class="form-control" value="False">Hayır</option>
+    </select>
+    <br />
+    <button class="btn btn-block btn-primary">Ekle</button>
+</form>
+

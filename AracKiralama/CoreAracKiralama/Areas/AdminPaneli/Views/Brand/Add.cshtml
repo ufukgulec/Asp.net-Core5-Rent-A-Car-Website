@@ -1,0 +1,19 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CoreAracKiralama.Models.Brand
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Marka Ekleme Sayfası</h1>
+<form asp-action="Add" asp-controller="Brand" method="post" class="form-group">
+    <label>@Html.DisplayNameFor(model => model.BrandName)</label>
+    <input type="text" class="form-control" asp-for="BrandName" />
+    @Html.ValidationMessageFor(x => x.BrandName, "", new { @style = "color:red" })
+    <br />
+    <label>@Html.DisplayNameFor(model => model.BrandDescription)</label>
+    <input type="text" class="form-control" asp-for="BrandDescription" />
+    <br />
+    <button class="btn btn-block btn-primary">Ekle</button>
+</form>
+

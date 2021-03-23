@@ -1,0 +1,133 @@
+﻿@{
+    ViewData["Title"] = "Araç Kiralama";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<style>
+    .counter {
+        text-align: center;
+        background-color: black;
+        padding: 10px;
+    }
+
+    .count {
+        color: white;
+    }
+
+    .counter_icon {
+        margin: 15px 0;
+        color: white;
+    }
+</style>
+<!-- 5 Most Popular Company Begin-->
+<section class="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>En popüler fırmalar</h2>
+        </div>
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var item in @ViewBag.popularCompanies as List<Company>)
+                {
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="@item.CompanyLogoUrl">
+                            <h5><a href="#">@item.CompanyName</a></h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 5 Most Popular Company End -->
+<br />
+<!-- Counters Begin -->
+<section class="breadcrumb-section set-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-2x fa-building counter_icon"></i>
+                    <h2 class="count">@ViewBag.CompanyCount</h2>
+                    <p>Firma Sayısı</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-2x fa-folder counter_icon"></i>
+                    <h2 class="count">@ViewBag.BrandCount</h2>
+                    <p>Marka Sayısı</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-2x fa-car counter_icon"></i>
+                    <h2 class="count">@ViewBag.VehicleCount</h2>
+                    <p>Araç Sayısı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Counters End -->
+<br />
+<!-- 5 Most Popular Brand Begin-->
+<section class="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>En popüler markalar</h2>
+        </div>
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var item in @ViewBag.popularBrands as List<Brand>)
+                {
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="@item.BrandLogoUrl">
+                            <h5><a href="#">@item.BrandName</a></h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 5 Most Popular Brand End -->
+<br />
+<!-- Advertisement  Section Begin -->
+<section class="breadcrumb-section set-bg" style="background-color:black">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>ARAÇ KİRALAMA</h2>
+                    <div class="breadcrumb__option">
+                        <a href="">Tel</a>
+                        <span>312 244 70 80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Advertisement  Section End -->
+<br />
+<!-- 5 Most Popular Vehicle Begin-->
+<section class="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>En popüler araçlar</h2>
+        </div>
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var item in @ViewBag.popularVehicles as List<Vehicle>)
+                {
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="@item.VehicleImgUrl">
+                            <h5><a href="#">@item.VehicleName</a></h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 5 Most Popular Vehicle End -->

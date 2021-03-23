@@ -1,0 +1,8 @@
+﻿@model List<Brand>
+<ul>
+    @foreach (var item in Model)
+    {
+<li><a asp-controller="Vehicle" asp-action="Index" asp-route-search="@item.BrandName">@item.BrandName</a></li>
+}
+
+</ul>

@@ -1,7 +1,7 @@
 
 <h1 align="center">Araç Kiralama</h1>
 <p>Asp.net Core5 teknolojisini kullanarak oluşturduğum projede Vitrin ve AdminPaneli Bulunuyor. </p>
-<p>Asp.net Core5 - CodeFirst - TagHelpers - Bootstrap - jQuery</p>
+<p>Asp.net Core5 - CodeFirst - TagHelpers - Bootstrap - jQuery </p>
 <h2 align="center">Vitrin</h2>
 <img class="my-4" src="https://i.hizliresim.com/mM8CnS.png" alt="Anasayfa">
 <img class="my-4" src="https://i.hizliresim.com/W9slGX.png" alt="Anasayfa">

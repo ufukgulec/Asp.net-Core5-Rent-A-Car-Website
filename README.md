@@ -1,1 +1,2 @@
-# Asp.net-Core5-Rent-A-Car-Website
+<h1>Araç Kiralama</h1>
+<p>Asp.Net Core5</p>
